@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <style media="screen">
+    @import url(https://fonts.googleapis.com/css?family=Lato);
+*, *::before, *::after {
+margin: 0;
+padding: 0;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+}
+body {
+font-size: 16px;
+font-family: 'Poppins', sans-serif, 'arial'!important;
+}
+.timeline {
+color: #fff;
+}
+.timeline h1, .timeline ul li .content h2 {
+text-shadow: 1px 1px 1px rgba(56, 56, 56, 0.5);
+}
+.timeline h1 {
+background: #1c2331;
+padding: 70px 0;
+font-size: 2.5em;
+text-align: center;
+background: -webkit-linear-gradient(-45deg, #56bc83, #1c2331);
+background: linear-gradient(-45deg, #56bc83, #1c2331);
+font-weight: bold;
+}
+.timeline ul {
+background: #faf8eb;
+padding: 50px 0;
+}
+.timeline ul li {
+background: #1c2331;
+position: relative;
+margin: 0 auto;
+width: 5px;
+padding-bottom: 40px;
+list-style-type: none;
+}
+.timeline ul li:last-child {
+padding-bottom: 7px;
+}
+.timeline ul li:before {
+content: '';
+background: #faf8eb;
+position: absolute;
+left: 50%;
+top: 0;
+transform: translateX(-50%);
+-webkit-transform: translateX(-50%);
+width: 20px;
+height: 20px;
+border: 3px solid #1c2331;
+-webkit-border-radius: 50%;
+-moz-border-radius: 50%;
+border-radius: 50%;
+}
+.timeline ul li .hidden {
+opacity: 0;
+}
+.timeline ul li .content {
+background: #1c2331;
+position: relative;
+top: 7px;
+width: 450px;
+padding: 20px;
+}
+.timeline ul li .content h2 {
+color: #fff;
+padding-bottom: 10px;
+text-align: center;
+}
+.timeline ul li .content p {
+text-align: center;
+}
+.timeline ul li .content:before {
+content: '';
+background: #1c2331;
+position: absolute;
+top: 0px;
+width: 38px;
+height: 5px;
+}
+.timeline ul li:nth-child(odd) .content {
+left: 50px;
+background: #1c2331;
+background: -webkit-linear-gradient(-45deg, #56bc83, #1c2331);
+background: linear-gradient(-45deg, #56bc83, #1c2331);
+}
+.timeline ul li:nth-child(odd) .content:before {
+left: -38px;
+}
+.timeline ul li:nth-child(even) .content {
+left: calc(-450px - 45px);
+background: #1c2331;
+background: -webkit-linear-gradient(45deg, #56bc83, #1c2331);
+background: linear-gradient(45deg, #56bc83, #1c2331);
+}
+.timeline ul li:nth-child(even) .content:before {
+right: -38px;
+}
+/* -------------------------
+----- Media Queries -----
+------------------------- */
+@media screen and (max-width: 1020px) {
+.timeline ul li .content {
+  width: 41vw;
+}
+.timeline ul li:nth-child(even) .content {
+  left: calc(-41vw - 45px);
+}
+}
+@media screen and (max-width: 700px) {
+.timeline ul li {
+  margin-left: 20px;
+}
+.timeline ul li .content {
+  width: calc(100vw - 100px);
+}
+.timeline ul li .content h2 {
+  text-align: initial;
+}
+.timeline ul li:nth-child(even) .content {
+  left: 45px;
+  background: #1c2331;
+  background: -webkit-linear-gradient(-45deg, #56bc83, #1c2331);
+  background: linear-gradient(-45deg, #56bc83, #1c2331);
+}
+.timeline ul li:nth-child(even) .content:before {
+  left: -33px;
+}
+}
+
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+  </head>
+  <body>
+    <!-- preloader -->
+    <div id="loading">
+      <div id="loading-center">
+        <div id="loading-center-absolute">
+          <div class="object" id="object_four"></div>
+          <div class="object" id="object_three"></div>
+          <div class="object" id="object_two"></div>
+          <div class="object" id="object_one"></div>
+        </div>
+      </div>
+    </div>
+    <div id="header"></div>  
+  <script>
+    $('#header').load('header.html');  
+</script>
+
+    <style media="screen">
+    /* preloader
+    -------------------------------*/
+
+    #loading{
+      background-color: #3452FF;
+      height: 100%;
+      width: 100%;
+      position: fixed;
+      z-index: 9999;
+      margin-top: 0px;
+      top: 0px;
+    }
+    #loading-center{
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    #loading-center-absolute {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      height: 200px;
+      width: 200px;
+      margin-top: -100px;
+      margin-left: -100px;
+    }
+    .object{
+      -moz-border-radius: 50% 50% 50% 50%;
+      -webkit-border-radius: 50% 50% 50% 50%;
+      border-radius: 50% 50% 50% 50%;
+      position: absolute;
+      border-left: 5px solid #FFF;
+      border-right: 5px solid #FFF;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      -webkit-animation: animate 2s infinite;
+      animation: animate 2s infinite;
+    }
+    #object_one{
+      left: 75px;
+      top: 75px;
+      width: 50px;
+      height: 50px;
+    }
+    #object_two{
+      left: 65px;
+      top: 65px;
+      width: 70px;
+      height: 70px;
+      -webkit-animation-delay: 0.1s;
+      animation-delay: 0.1s;
+    }
+    #object_three{
+      left: 55px;
+      top: 55px;
+      width: 90px;
+      height: 90px;
+      -webkit-animation-delay: 0.2s;
+      animation-delay: 0.2s;
+    }
+    #object_four{
+      left: 45px;
+      top: 45px;
+      width: 110px;
+      height: 110px;
+      -webkit-animation-delay: 0.3s;
+      animation-delay: 0.3s;
+    }
+
+    @-webkit-keyframes animate {
+      50% {
+        -ms-transform: rotate(180deg);
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+      }
+      100% {
+        -ms-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+    }
+
+    @keyframes animate {
+      50% {
+        -ms-transform: rotate(180deg);
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+      }
+      100% {
+        -ms-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+    }
+
+    </style>
+    <style media="screen">
+
+        </style>
+
+
+    <section class="timeline">
+
+  <h1>Whether it’s a simple website or a sophisticated web application, our work excels in quality and effectiveness.</h1>
+
+  <ul>
+  <h1 style="background:#faf8eb; color:#1c2331">Our Process</h1>
+    <li>
+      <div class="content">
+        <h2>
+          <time>Research and analysis</time>
+        </h2>
+        <p>This is the first stage of building the product. This involves carefully noting down the client requirements and doing a holistic market research around it. Next up is checking the feasibility of the client idea and estimating the time and resources to be used in its making. It also involves scaling the market size and determining the growth prospects and product competition in the market.</p>
+      </div>
+    </li>
+    <li>
+      <div class="content">
+        <h2>
+          <time>Product designing and wire-framing</time>
+        </h2>
+      <p>After the research and analysis is done, wireframes are created. Along with it, creation of the work flow, PowerPoint presentations, charts and feature listings is also done. In- depth planning is done to provide the best possible implementation of the product according to the needs of the client.</p>
+      </div>
+    </li>
+    <li>
+      <div class="content">
+        <h2>
+          <time>UI/UX design</time>
+        </h2>
+        <p>After doing holistic research, the product prototype is designed using various tools like Moqups, Photoshop, Adobe Illustrator and Sketch etc.. This prototype is then discussed with the client and the product design is finalised after incorporating the changes.</p>
+      </div>
+    </li>
+    <li>
+      <div class="content">
+        <h2>
+          <time>Development and testing</time>
+        </h2>
+        <p>This stage involves, converting the on-paper product into reality i.e. creating the digital form of the product. Each feature desirable to the client is meticulously developed and extensively tested from time-to- time. The client is fortnightly updated with the progress of the product so that they could be assured of the quality and timely delivery of the product.</p>
+      </div>
+    </li>
+    <li>
+      <div class="content">
+        <h2>
+          <time>Delivery & Launch</time>
+        </h2>
+        <p>This is the final phase that deals with the delivery of the finished product as well as its launch. After the results of all the above-mentioned stages are clubbed together with intermediate stages of testing to form the final product, the product is ready to be delivered to the client and to go live. Post delivery assistance is also provided 24/7. Every little thing is taken care of by the team to ensure a smooth and foolproof launch.</p>
+      </div>
+    </li>
+    <li></li>
+  </ul>
+</section>
+
+<script type="text/javascript">
+/* Check the location of each element */
+$('.content').each( function(i){
+
+var bottom_of_object= $(this).offset().top + $(this).outerHeight();
+var bottom_of_window = $(window).height();
+
+if( bottom_of_object > bottom_of_window){
+  $(this).addClass('hidden');
+}
+});
+
+
+$(window).scroll( function(){
+  /* Check the location of each element hidden */
+  $('.hidden').each( function(i){
+
+      var bottom_of_object = $(this).offset().top + $(this).outerHeight();
+      var bottom_of_window = $(window).scrollTop() + $(window).height();
+
+      /* If the object is completely visible in the window, fadeIn it */
+      if( bottom_of_window > bottom_of_object ){
+        $(this).animate({'opacity':'1'},700);
+      }
+  });
+});
+</script>
+
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/jquery.nicescroll.min.js"></script>
+
+
+<script>
+$(window).load(function() { // makes sure the whole site is loaded
+  $('#status').fadeOut(); // will first fade out the loading animation
+  $('#preloader').delay(350).fadeOut('slow');
+    // will fade out the white DIV that covers the website.
+  $('body').delay(350).css({'overflow':'visible'});
+})
+//========================
+//CUSTOM SCROLLBAR
+//========================
+$("html").niceScroll({
+    mousescrollstep: 50,
+    cursorcolor: "#1c2331",
+    cursorwidth: "9px",
+    cursorborderradius: "10px",
+    cursorborder: "none",
+});
+
+$(function() {
+  $('a[href*=#]:not([href=#])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html,body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
+</script>
+
+<!-- main jQuery -->
+<script src="assets/js/jquery-2.1.3.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/js/bootsnav.js"></script>
+<script src="assets/js/owl.carousel.min.js"></script>
+<script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/ajaxchimp.js"></script>
+    <script src="assets/js/ajaxchimp-config.js"></script>
+<script src="assets/js/script.js"></script>
+  </body>
+</html>
